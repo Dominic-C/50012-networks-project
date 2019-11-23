@@ -31,6 +31,8 @@ Virutal Machine
 
 * Building curl with http 3 support. Follow instructions on https://github.com/curl/curl/blob/master/docs/HTTP3.md to first build quiche. Before building curl from source, make sure you have pkg-config installed via `sudo apt install pkg-config` .
 ```
+$ git clone https://github.com/curl/curl
+$ cd curl
 $ ./buildconf
 $ ./configure LDFLAGS="-Wl,-rpath,$PWD/../quiche/target/release" --with-ssl=$PWD/../quiche/deps/boringssl/.openssl --with-quiche=$PWD/../quiche/target/release --disable-libcurl-option --disable-shared
 $ make
