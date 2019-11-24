@@ -48,7 +48,10 @@ $ sudo make install
 ### Building cURL with http 2 and 3 functionalities from source 
 #### http 2
 * Ensure you have the latest nghttp2 libraries on your system.
-```wget https://github.com/nghttp2/nghttp2/releases/download/v1.40.0/nghttp2-1.40.0.tar.xz``` or ```curl https://github.com/nghttp2/nghttp2/releases/download/v1.40.0/nghttp2-1.40.0.tar.xz -o```
+
+```wget https://github.com/nghttp2/nghttp2/releases/download/v1.40.0/nghttp2-1.40.0.tar.xz``` or 
+
+```curl https://github.com/nghttp2/nghttp2/releases/download/v1.40.0/nghttp2-1.40.0.tar.xz -o```
 ```
 tar -xf nghttp2-1.40.0.tar.xz && cd nghttp2-1.40.0
 ./configure --prefix=/usr --disable-static --enable-lib-only --docdir=/usr/share/doc/nghttp2-1.40.0
