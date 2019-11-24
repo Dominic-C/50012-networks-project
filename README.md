@@ -30,6 +30,8 @@ Virutal Machine
 * Should you encounter the error ```curl failed to write to body(xxx)```, use curl command as posted above, pipe output to tac twice as tac reverses the output, before piping it to tee. E.g. `curl -o test.iso https://storage.googleapis.com/50012-networks-bucket/ubuntu-18.04.iso 2>&1 | tac | tac | tee test.log`
 
 * Building curl with http 3 support. Follow instructions on https://github.com/curl/curl/blob/master/docs/HTTP3.md to first build quiche. Before building curl from source, make sure you have pkg-config installed via `sudo apt install pkg-config` .
+
+* Install rust from source: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh` and add `~/.cargo/bin` to the `PATH` before building quiche
 ```
 $ git clone https://github.com/curl/curl
 $ cd curl
