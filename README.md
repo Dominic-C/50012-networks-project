@@ -111,7 +111,7 @@ apt install qttools5-dev qttools5-dev-tools libqt5svg5-dev qtmultimedia5-dev bui
 * Install wireshark
 ```
 cd /tmp
-tar -xf wget https://1.eu.dl.wireshark.org/src/wireshark-3.0.6.tar.xz
+tar -xf wireshark-3.0.6.tar.xz
 mkdir build && cd build
 cmake /tmp/wireshark-3.0.6
 make
