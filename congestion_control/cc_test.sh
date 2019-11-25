@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Removing old files"
 rm -rf cc_logs
-
+mkdir cc_logs
 echo "beginning tests!"
 
 # 1 http2 vs 3 http3 connections
