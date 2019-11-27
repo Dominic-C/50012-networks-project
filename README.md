@@ -1,27 +1,27 @@
 # QUIC vs TCP
 This repository contains the steps we took to test the performance of QUIC versus TCP. To begin, we'll explain our methodology.
 
-## Methodology
-Our initial plan was to launch a chromium server and try to server files off of it. However, due to technical challenges such as incomplete binaries, we were unable to build the chromium server.
+# Tests
+These are the tests we conducted to compare the performance of QUIC vs TCP.
+## Handshake Test
 
-The alternative solution was to upload a file into a server owned by google, then try to download it using http/3 (built on QUIC) and http/2 (built on TCP).
+## Bandwidth Test
+For this test, we used the script `bandwidth_testing/start_download.sh`. This script downloads a 10MB file from a litespeed server 10 times with http/3 and 10 times with http/3. The script generates log files for each download.
 
-Luckily for us, the latest version of curl at the time of writing, v7.67 had support for http/3. However, it was not available on the linux repositories. Thus we had to build it from source code which was quite challenging.
+We then analyze the log files, conduct our analysis and plot graphs in `bandwidth_testing/bandwidth testing.ipynb`
 
-After building curl v7.67, we uploaded files into Google Cloud Storage (GCS) buckets and make the contents publicly accessible.
+## Congestion Control Test
+For this test, we used the scripts `cc_test1.sh` to `cc_test4.sh` under the `congestion_control` folder. These sripts run the following tests:
+* run 3 TCP sessions while logging 1 QUIC session in parallel
+* run 3 TCP sessions while logging 1 TCP session in parallel
+* run 3 QUIC sessions while logging 1 QUIC session in parallel
+* run 3 QUIC sessions while logging 1 TCP session in parallel
 
-## Testing
-We used two setups for our testing
+We also ran the script `temp` to conduct the following tests:
+* run 2 TCP and 2 QUIC sessions while logging 1 QUIC session in parallel
+* run 2 TCP and 2 QUIC sessions while logging 1 TCP session in parallel
 
-### Setup 1
-Amazon EC2 Free tier
-* Throughput: ~70Mbits
-
-### Setup 2
-Virutal Machine
-* Throughput: varies
-
-## commands used for testing
+# Commands used for testing
 * to download 1 file and log the progress: `curl -o test.iso https://storage.googleapis.com/50012-networks-bucket/ubuntu-18.04.iso 2>&1 | tee test.log`
     * log file will be processed in python and can be used to generate graphs
 
@@ -43,7 +43,7 @@ $ sudo make install
 * When encountering ```error: linking with cc failed: exit code: 1```, do ```sudo apt install gcc-multilib```
 * Building wireshark latest version from source on ubuntu, visit https://kifarunix.com/install-latest-wireshark-on-ubuntu-18-04/
 
-## Bob's great building workshop for Ubuntu 18.04 :))
+# Bob's great building workshop for Ubuntu 18.04 :))
 
 ### Building cURL with http 2 and 3 functionalities from source 
 #### http 2
