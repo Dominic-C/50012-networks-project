@@ -4,9 +4,10 @@ This repository contains the steps we took to test the performance of QUIC versu
 # Tests
 These are the tests we conducted to compare the performance of QUIC vs TCP.
 ## Handshake Test
+For this test, we used the script `handshake_testing/test_handshake.sh`. This script downloads a small file (<1kB) 100 times for http/2 and http/3 from the litespeed server. The script generates the output in the terminal of the averages of the 100 tests for both http/2 and http/3
 
 ## Bandwidth Test
-For this test, we used the script `bandwidth_testing/start_download.sh`. This script downloads a 10MB file from a litespeed server 10 times with http/3 and 10 times with http/2. The script generates log files for each download.
+For this test, we used the script `bandwidth_testing/start_download.sh`. This script downloads a 10MB file from a litespeed server 10 times with http/2 and 10 times with http/3. The script generates log files for each download.
 
 The script generates the logs for this test in `bandwidth_testing/http2_logs` and `bandwidth_testing/http3_logs` respectively
 
@@ -19,7 +20,7 @@ For this test, we used the scripts `cc_test1.sh` to `cc_test4.sh` under the `con
 * run 3 QUIC sessions while logging 1 QUIC session in parallel
 * run 3 QUIC sessions while logging 1 TCP session in parallel
 
-We also ran the script `cong_test.sh` and `cong_test2.sh` to conduct the following tests:
+We also ran the script `temp` to conduct the following tests:
 * run 2 TCP and 2 QUIC sessions while logging 1 QUIC session in parallel
 * run 2 TCP and 2 QUIC sessions while logging 1 TCP session in parallel
 
