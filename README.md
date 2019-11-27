@@ -6,7 +6,9 @@ These are the tests we conducted to compare the performance of QUIC vs TCP.
 ## Handshake Test
 
 ## Bandwidth Test
-For this test, we used the script `bandwidth_testing/start_download.sh`. This script downloads a 10MB file from a litespeed server 10 times with http/3 and 10 times with http/3. The script generates log files for each download.
+For this test, we used the script `bandwidth_testing/start_download.sh`. This script downloads a 10MB file from a litespeed server 10 times with http/3 and 10 times with http/2. The script generates log files for each download.
+
+The script generates the logs for this test in `bandwidth_testing/http2_logs` and `bandwidth_testing/http3_logs` respectively
 
 We then analyze the log files, conduct our analysis and plot graphs in `bandwidth_testing/bandwidth testing.ipynb`
 
@@ -20,6 +22,10 @@ For this test, we used the scripts `cc_test1.sh` to `cc_test4.sh` under the `con
 We also ran the script `cong_test.sh` and `cong_test2.sh` to conduct the following tests:
 * run 2 TCP and 2 QUIC sessions while logging 1 QUIC session in parallel
 * run 2 TCP and 2 QUIC sessions while logging 1 TCP session in parallel
+
+The scripts above generate the logs found in `congestion_control/cc_logs`
+
+The results for our analysis can be found in `congestion_control/cc_logs/.ipynb_checkpoints/plotted-checkpoint.ipynb`
 
 # Commands used for testing
 * to download 1 file and log the progress: `curl -o test.iso https://storage.googleapis.com/50012-networks-bucket/ubuntu-18.04.iso 2>&1 | tee test.log`
