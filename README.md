@@ -34,21 +34,7 @@ The results for our analysis can be found in `congestion_control/cc_logs/.ipynb_
 
 * to download multiple files in parallel: `cat links.txt | parallel -j 3 curl --http3 {}` where `links.txt` is a list of urls each on a new line
     * requires `sudo apt-get install parallel`
-* Should you encounter the error ```curl failed to write to body(xxx)```, use curl command as posted above, pipe output to tac twice as tac reverses the output, before piping it to tee. E.g. `curl -o test.iso https://storage.googleapis.com/50012-networks-bucket/ubuntu-18.04.iso 2>&1 | tac | tac | tee test.log`
-
-* Building curl with http 3 support. Follow instructions on https://github.com/curl/curl/blob/master/docs/HTTP3.md to first build quiche. Before building curl from source, make sure you have pkg-config installed via `sudo apt install pkg-config` .
-
-* Install rust from source: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh` and add `~/.cargo/bin` to the `PATH` before building quiche
-```
-$ git clone https://github.com/curl/curl
-$ cd curl
-$ ./buildconf
-$ ./configure LDFLAGS="-Wl,-rpath,$PWD/../quiche/target/release" --with-ssl=$PWD/../quiche/deps/boringssl/.openssl --with-quiche=$PWD/../quiche/target/release --disable-libcurl-option --disable-shared
-$ make
-$ sudo make install
-```
-* When encountering ```error: linking with cc failed: exit code: 1```, do ```sudo apt install gcc-multilib```
-* Building wireshark latest version from source on ubuntu, visit https://kifarunix.com/install-latest-wireshark-on-ubuntu-18-04/
+* Should you encounter the error `curl failed to write to body(xxx)`, use curl command as posted above, pipe output to tac twice as tac reverses the output, before piping it to tee. E.g. `curl -o test.iso https://storage.googleapis.com/50012-networks-bucket/ubuntu-18.04.iso 2>&1 | tac | tac | tee test.log`
 
 # Bob's great building workshop for Ubuntu 18.04 :))
 
@@ -130,3 +116,5 @@ sudo make install
 Hope you enjoyed building your binaries as much as I didn't (:
 
 P.S. If you encountered any other problem, it's probably something I didnt face even though I built my libraries on a fresh Ubuntu 18.04 image
+
+Ubuntu Image with preinstalled cURL v7.68-DEV and wireshark 3.0.6 https://sutdapac-my.sharepoint.com/:u:/g/personal/chiseng_wong_mymail_sutd_edu_sg/ETVEv2GsKttLgxiZ8ZnlMcwBmvRslpbTul6dBNTnlSm9Pg?e=Kh2Thg
