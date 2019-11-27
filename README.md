@@ -17,7 +17,7 @@ For this test, we used the scripts `cc_test1.sh` to `cc_test4.sh` under the `con
 * run 3 QUIC sessions while logging 1 QUIC session in parallel
 * run 3 QUIC sessions while logging 1 TCP session in parallel
 
-We also ran the script `temp` to conduct the following tests:
+We also ran the script `cong_test.sh` and `cong_test2.sh` to conduct the following tests:
 * run 2 TCP and 2 QUIC sessions while logging 1 QUIC session in parallel
 * run 2 TCP and 2 QUIC sessions while logging 1 TCP session in parallel
 
